@@ -1,4 +1,12 @@
-./.idea
-./target
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+target
 src/main/resources/Downloaded.txt
 src/main/resources/lostMusic.txt
+
