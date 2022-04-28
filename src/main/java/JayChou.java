@@ -2,7 +2,6 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
 import java.io.IOException;
-import java.util.Date;
 
 public class JayChou {
 
@@ -24,24 +23,6 @@ public class JayChou {
             "3c75Cyvg0gU1OTANscE4JQkCN4vNRy4dE_twU9h7YCDap3Xa3U6NU0Pk9BO_AcAqT-KUuHWwLHfR7Emz3A",
     };
 
-    public static String BASE_URL = "C:\\Users\\ABC\\Music\\JayChou\\";
-
-    public static String post_url = "http://59.110.45.28/m/api/search";
-
-
-    // 下载文件并重命名
-    private static void RefactorFileName(String artist, String name, String nUrl) throws IOException {
-        System.out.print("开始下载\t" + artist + "\t" + name);
-        long begin_time = new Date().getTime();
-        // 在这里修改文件名
-        Tools.downloadUsingStream(nUrl, BASE_URL + name + "-" + artist + ".flac"); // 如：青花瓷-周杰伦.flac
-
-        long end_time = new Date().getTime();
-        long seconds = (end_time - begin_time) / 1000;
-        long minutes = seconds / 60;
-        long second = seconds % 60;
-        System.out.println(name + "\t下载完成,用时：" + minutes + "分" + second + "秒");
-    }
 
     public static void main(String[] args) throws IOException {
         // 对所有的请求进行处理
@@ -61,7 +42,7 @@ public class JayChou {
                     for (String s : formats) {
                         if (s != null) {
                             String nUrl = Tools.getRediectUrl(s);
-                            RefactorFileName(artist, name, nUrl);
+                            Tools.DownloadAndRename(artist, name, nUrl);
                             break;
                         }
                     }
